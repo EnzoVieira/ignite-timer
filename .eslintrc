@@ -1,7 +1,3 @@
 {
-  "extends": ["@rocketseat/eslint-config/react", "prettier"],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": ["error"]
-  }
+  "extends": ["@enzovieira/eslint-config"],
 }

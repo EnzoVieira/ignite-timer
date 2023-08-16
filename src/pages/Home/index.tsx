@@ -1,45 +1,45 @@
-import { HandPalm, Play } from 'phosphor-react'
-import { FormProvider, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as zod from 'zod'
+import { HandPalm, Play } from "phosphor-react"
+import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as zod from "zod"
 
 import {
   HomeContainer,
   StartCountdownButton,
   StopCountdownButton,
-} from './styles'
+} from "./styles"
 
-import { Countdown } from './components/Countdown'
-import { NewCycleForm } from './components/NewCycleForm'
-import { useCycles } from '../../context/CyclesContext'
+import { Countdown } from "./components/Countdown"
+import { NewCycleForm } from "./components/NewCycleForm"
+import { useCycles } from "../../context/CyclesContext"
 
 const newCycleValidationSchema = zod.object({
-  task: zod.string().min(1, 'Informe a tarefa'),
+  task: zod.string().min(1, "Informe a tarefa"),
   minutesAmount: zod
     .number()
-    .min(5, 'O ciclo precisa ser de no mínimo 5 minutos')
-    .max(60, 'O ciclo precisa ser de no máximo 60 minutos'),
+    .min(5, "O ciclo precisa ser de no mínimo 5 minutos")
+    .max(60, "O ciclo precisa ser de no máximo 60 minutos"),
 })
 
-type NewCycleFormData = zod.infer<typeof newCycleValidationSchema>
+type NewCycleFormDataType = zod.infer<typeof newCycleValidationSchema>
 
 export function Home() {
   const { activeCycle, createNewCycle, interruptCurrentCycle } = useCycles()
 
-  const newCycleForm = useForm<NewCycleFormData>({
+  const newCycleForm = useForm<NewCycleFormDataType>({
     resolver: zodResolver(newCycleValidationSchema),
     defaultValues: {
-      task: '',
+      task: "",
       minutesAmount: 0,
     },
   })
 
   const { handleSubmit, watch, reset } = newCycleForm
 
-  const task = watch('task')
+  const task = watch("task")
   const isSubmitDisabled = !task
 
-  function handleCreateNewCycle(data: NewCycleFormData) {
+  function handleCreateNewCycle(data: NewCycleFormDataType) {
     createNewCycle(data)
     reset()
   }

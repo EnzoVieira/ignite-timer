@@ -1,8 +1,8 @@
-import { formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import { formatDistanceToNow } from "date-fns"
+import ptBR from "date-fns/locale/pt-BR"
 
-import { useCycles } from '../../context/CyclesContext'
-import { HistoryContainer, HistoryList, Status } from './styles'
+import { useCycles } from "../../context/CyclesContext"
+import { HistoryContainer, HistoryList, Status } from "./styles"
 
 export function History() {
   const { cycles } = useCycles()

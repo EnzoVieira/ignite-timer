@@ -22,7 +22,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@rocketseat/eslint-config": "^2.1.0",
+    "@enzovieira/eslint-config": "^1.0.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
